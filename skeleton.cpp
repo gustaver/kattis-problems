@@ -3,6 +3,9 @@
 #include <iostream> 
 #include <set> 
 #include <cmath>
+#include <float.h>
+#include <iomanip>
+#define pi 3.14159265358979323846
 #include "prettyprint.hpp"
 using namespace std;
 
@@ -13,6 +16,7 @@ using namespace std;
 #define endl '\n'
 typedef long long ll;
 typedef pair<int, int> ii;
+typedef pair<double, double> dd;
 typedef vector<int> vi;
 
 int main() {
