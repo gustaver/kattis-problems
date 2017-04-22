@@ -49,21 +49,21 @@ int main() {
 
 		if (numberOfAirports == 1) {
 			cout << fixed << setprecision(2) << airports[0].first << " " << airports[0].second << endl;
-		} else {
-			double sum; 
-			double smallest = DBL_MAX;
-			int indexSmallest = 1; 
+		} else { 
+			double smallesMaxDistance = DBL_MAX;
+			int indexSmallest = 0; 
 			for (int i = 0; i < numberOfAirports; i++) {
-				sum = 0; 
+				double distance = 0;
 				dd current = airports[i];
-				for (int j = 0; j < numberOfAirports; j++) {
-					dd compare = airports[j];
-					double distance = haversine(current.first, current.second, compare.first, compare.second);
-					sum += distance;
+				for (int j = 0; j < numberOfAirports; j++) { 
+					if (j != i) {
+						dd compare = airports[j];
+						distance = max(haversine(current.first, current.second, compare.first, compare.second), distance);
+					}
 				}
-				if (sum <= smallest) {
-					smallest = sum; 
-					indexSmallest = i; 
+				if (distance <= smallesMaxDistance) {
+					smallesMaxDistance = distance; 
+					indexSmallest = i;
 				}
 			}
 			cout << fixed << setprecision(2) << airports[indexSmallest].first << " " << airports[indexSmallest].second << endl;
